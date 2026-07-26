@@ -7,9 +7,10 @@ export default function UserForm({
 }) {
 
     const [values, setValues] = useState({
-        firstName: "",
-        lastName: "",
-        email: ""
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: ""
     });
 
     useEffect(() => {
@@ -17,7 +18,8 @@ export default function UserForm({
             setValues({
                 firstName: initialValues.firstName || "",
                 lastName: initialValues.lastName || "",
-                email: initialValues.email || ""
+                email: initialValues.email || "",
+                password: ""
             });
         }
     }, [initialValues]);
@@ -44,9 +46,9 @@ export default function UserForm({
 
                 <input
                     type="text"
-                    name="firstName"
+                    name="firstname"
                     className="form-control"
-                    value={values.firstName}
+                    value={values.firstname}
                     onChange={handleChange}
                     required
                 />
@@ -59,9 +61,9 @@ export default function UserForm({
 
                 <input
                     type="text"
-                    name="lastName"
+                    name="lastname"
                     className="form-control"
-                    value={values.lastName}
+                    value={values.lastname}
                     onChange={handleChange}
                     required
                 />
@@ -81,6 +83,19 @@ export default function UserForm({
                     required
                 />
             </div>
+
+            <div className="mb-3">
+    <label className="form-label">Password</label>
+
+    <input
+        type="password"
+        name="password"
+        className="form-control"
+        value={values.password}
+        onChange={handleChange}
+        required
+    />
+</div>
 
             <button
                 type="submit"

@@ -2,8 +2,14 @@ const UsersModel = require("../models/User");
 
 module.exports.add = async function (req, res, next) {
     try {
-        let newUser = new UsersModel(req.body);
-        let result = await UsersModel.create(newUser);
+        const user = new UsersModel();
+
+user.firstname = req.body.firstname;
+user.lastname = req.body.lastname;
+user.email = req.body.email;
+user.password = req.body.password; // virtual generates hashed_password
+
+const result = await user.save();
 
         res.json({
             success: true,
