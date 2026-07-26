@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Counter from "../src/Counter";
+import Counter from "../src/counter";
 import controlledComponent from "./ControlledComponent";
 import incrementdecrement from "../src/IncrementDecrement";
 import About from "../src/about";
