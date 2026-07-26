@@ -55,7 +55,7 @@ export default function ProjectList() {
 
 <tbody>
     {projects.map((project) => (
-        <tr key={project._id}>
+        <tr key={project.id}>
 
             <td>{project.title}</td>
             <td>{project.completion}</td>
@@ -63,14 +63,14 @@ export default function ProjectList() {
 
             <td>
                 <Link
-                    to={`/admin/projects/edit/${project._id}`}
+                    to={`/admin/projects/edit/${project.id}`}
                     className="btn btn-warning btn-sm me-2">
                     Edit
                 </Link>
 
                 <button
                     className="btn btn-danger btn-sm"
-                    onClick={() => deleteProject(project._id)}>
+                    onClick={() => deleteProject(project.id)}>
                     Delete
                 </button>
             </td>
