@@ -65,12 +65,10 @@ usersModel.methods.authenticate = function (password) {
     return this.hashed_password === this.hashPassword(password);
 }
 
-// Ensure virtual fields are serialised.
 usersModel.set('toJSON', {
     virtuals: true,
     versionKey: false,
     transform: function (doc, ret) {
-        delete ret._id;
         delete ret.hashed_password;
         delete ret.salt;
     }
