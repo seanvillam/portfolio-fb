@@ -16,8 +16,8 @@ export default function UserForm({
     useEffect(() => {
         if (initialValues) {
             setValues({
-                firstName: initialValues.firstName || "",
-                lastName: initialValues.lastName || "",
+                firstname: initialValues.firstname || "",
+                lastname: initialValues.lastname || "",
                 email: initialValues.email || "",
                 password: ""
             });
