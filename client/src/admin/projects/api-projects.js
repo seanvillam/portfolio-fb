@@ -1,4 +1,4 @@
-const API = "https://portfolio-frontend-cpaq.onrender.com/api";
+const API = "https://portfolio-test-u2ex.onrender.com/api";
 
 export const list = async () => {
     const response = await fetch(`${API}/projects`);
