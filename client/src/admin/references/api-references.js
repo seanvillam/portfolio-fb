@@ -2,7 +2,8 @@ const API = "https://portfolio-test-u2ex.onrender.com/api";
 
 export const list = async () => {
     const response = await fetch(`${API}/references`);
-    return await response.json();
+    const result = await response.json();
+    return result.data;
 };
 
 export const create = async (reference) => {
@@ -19,7 +20,8 @@ export const create = async (reference) => {
 
 export const read = async (id) => {
     const response = await fetch(`${API}/references/${id}`);
-    return await response.json();
+    const result = await response.json();
+    return result.data;
 };
 
 export const update = async (id, reference) => {
