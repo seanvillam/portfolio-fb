@@ -67,6 +67,7 @@ export default function ReferencesList() {
                         <th>Name</th>
                         <th>Position</th>
                         <th>Company</th>
+                        <th>Testimonial</th>
                         <th width="180">Actions</th>
                     </tr>
                 </thead>
@@ -75,7 +76,7 @@ export default function ReferencesList() {
 
                     {references.length === 0 ? (
                         <tr>
-                            <td colSpan="4" className="text-center">
+                            <td colSpan="6" className="text-center">
                                 No references found.
                             </td>
                         </tr>
@@ -88,6 +89,7 @@ export default function ReferencesList() {
                                 <td>{reference.name}</td>
                                 <td>{reference.position}</td>
                                 <td>{reference.company}</td>
+                                <td>{reference.testimonial}</td>
 
                                 <td>
 
