@@ -12,6 +12,8 @@ export default function ProjectList() {
     const loadProjects = async () => {
         const data = await list();
 
+        console.log(data);
+
         if (data) {
             setProjects(data);
         }
