@@ -1,8 +1,8 @@
-const UsersModel = require('../models/User.js');
+const UsersModel = require("../models/User");
 
 module.exports.add = async function (req, res, next) {
     try {
-        let newUser = UsersModel(req.body);
+        let newUser = new UsersModel(req.body);
         let result = await UsersModel.create(newUser);
 
         res.json({
@@ -11,9 +11,75 @@ module.exports.add = async function (req, res, next) {
             data: result
         });
 
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+};
+
+module.exports.list = async function (req, res, next) {
+    try {
+        let result = await UsersModel.find();
+
+        res.json({
+            success: true,
+            message: "Users list retrieved successfully.",
+            data: result
+        });
 
     } catch (error) {
         console.log(error);
         next(error);
     }
-}
+};
+
+module.exports.read = async function (req, res, next) {
+    try {
+        let result = await UsersModel.findById(req.params.id);
+
+        res.json({
+            success: true,
+            message: "User retrieved successfully.",
+            data: result
+        });
+
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+};
+
+module.exports.update = async function (req, res, next) {
+    try {
+        let result = await UsersModel.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+
+        res.json({
+            success: true,
+            message: "User updated successfully.",
+            data: result
+        });
+
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+};
+
+module.exports.remove = async function (req, res, next) {
+    try {
+        await UsersModel.findByIdAndDelete(req.params.id);
+
+        res.json({
+            success: true,
+            message: "User deleted successfully."
+        });
+
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+};
