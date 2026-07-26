@@ -1,0 +1,43 @@
+const API = "https://portfolio-frontend-cpaq.onrender.com/api";
+
+export const list = async () => {
+    const response = await fetch(`${API}/references`);
+    return await response.json();
+};
+
+export const create = async (reference) => {
+    const response = await fetch(`${API}/references`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reference),
+    });
+
+    return await response.json();
+};
+
+export const read = async (id) => {
+    const response = await fetch(`${API}/references/${id}`);
+    return await response.json();
+};
+
+export const update = async (id, reference) => {
+    const response = await fetch(`${API}/references/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reference),
+    });
+
+    return await response.json();
+};
+
+export const remove = async (id) => {
+    const response = await fetch(`${API}/references/${id}`, {
+        method: "DELETE",
+    });
+
+    return await response.json();
+};
