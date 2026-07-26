@@ -26,28 +26,18 @@ function EditProject() {
             });
     }, [id, navigate]);
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setProject((prevProject) => ({ ...prevProject, [name]: value }));
+    const handleSubmit = async (values) => {
+
+    const res = await update(id, values);
+
+    if (res.success) {
+        alert(res.message);
+        navigate("/admin/projects");
+    } else {
+        setErrorMsg(res.message);
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault(); // Cancels the default action of the form submission (page reload)
-
-        update(id, project)
-            .then((res) => {
-                if (res.success) {
-                    alert(res.message);
-                    navigate('/admin/projects');
-                } else {
-                    setErrorMsg(res.message);
-                }
-            })
-            .catch((err) => {
-                setErrorMsg(err.message);
-                console.log(err);
-            });
-    }
+};
 
     return (
         <div className="container" style={{ paddingTop: 80 }}>
