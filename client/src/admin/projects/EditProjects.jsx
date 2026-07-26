@@ -56,9 +56,9 @@ function EditProject() {
                     <h1>Edit a Project Item</h1>
                     <p className="flash"><span>{errorMsg}</span></p>
                     <ProjectForm
-                        project={project}
-                        handleChange={handleChange}
-                        handleSubmit={handleSubmit}
+                        initialValues={project}
+                        onSubmit={handleSubmit}
+                        submitLabel="Update Project"
                     />
                 </div>
             </div>

@@ -1,38 +1,37 @@
 import { useNavigate } from "react-router-dom";
 import ProjectForm from "./ProjectForm";
-import ProjectModel from "./ProjectModel";
 import { create } from "./api-projects";
 
 export default function AddProject() {
 
     const navigate = useNavigate();
 
-    const handleSubmit = async (project) => {
+    const handleSubmit = async (values) => {
 
-        const res = await create(project);
+        const data = await create(values);
 
-        if (res.success) {
-            alert(res.message);
+        if (data.success) {
             navigate("/admin/projects");
         } else {
-            alert(res.message);
+            alert(data.message);
         }
     };
 
     return (
-        <div className="container" style={{ paddingTop: 80 }}>
-            <div className="row">
-                <div className="offset-md-3 col-md-6">
+        <div className="container mt-4">
 
-                    <h1>Add Project</h1>
+            <h2>Add Project</h2>
 
-                    <ProjectForm
-                        project={new ProjectModel()}
-                        handleSubmit={handleSubmit}
-                    />
+            <ProjectForm
+                initialValues={{
+                    title: "",
+                    completion: "",
+                    description: ""
+                }}
+                onSubmit={handleSubmit}
+                submitLabel="Create Project"
+            />
 
-                </div>
-            </div>
         </div>
     );
 }

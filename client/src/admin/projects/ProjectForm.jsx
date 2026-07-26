@@ -36,12 +36,13 @@ export default function ProjectForm({
     };
 
     const handleSubmit = (e) => {
+    e.preventDefault();
 
-        e.preventDefault();
+    console.log("onSubmit =", onSubmit);
+    console.log("values =", values);
 
-        onSubmit(values);
-
-    };
+    onSubmit(values);
+};
 
     return (
 
