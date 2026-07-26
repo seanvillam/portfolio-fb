@@ -2,8 +2,6 @@ const Service = require("../models/Service");
 
 const formatDocument = (doc) => {
   const obj = doc.toObject();
-  obj.id = obj._id;
-  delete obj._id;
   delete obj.__v;
   return obj;
 };
