@@ -2,7 +2,8 @@ const API = "https://portfolio-test-u2ex.onrender.com/api";
 
 export const list = async () => {
     const response = await fetch(`${API}/users`);
-    return await response.json();
+    const result = await response.json();
+    return result.data;
 };
 
 export const create = async (user) => {
