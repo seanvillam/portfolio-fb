@@ -14,7 +14,8 @@ export default function ServicesList() {
     const loadServices = async () => {
 
         const data = await list();
-
+console.log(data);
+console.log(Array.isArray(data));
         if (data) {
             setServices(data);
         }
