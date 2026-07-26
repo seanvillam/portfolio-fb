@@ -78,8 +78,8 @@ export default function UsersList() {
                         users.map((user) => (
                             <tr key={user._id}>
 
-                                <td>{user.firstName}</td>
-                                <td>{user.lastName}</td>
+                                <td>{user.firstname}</td>
+                                <td>{user.lastname}</td>
                                 <td>{user.email}</td>
 
                                 <td>
