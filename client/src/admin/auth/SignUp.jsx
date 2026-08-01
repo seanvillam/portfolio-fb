@@ -45,7 +45,7 @@ export default function SignUp() {
         <div className="container mt-5">
             <div className="row justify-content-center">
                 <div className="col-md-6">
-                    <div className="card shadow">
+                    <div className="card shadow-lg p-4" style={{ width: "420px", borderRadius: "12px" }}>
                         <div className="card-body">
 
                             <h2 className="text-center mb-4">
