@@ -1,6 +1,6 @@
-import library from "./assets/library.png";
-import todo from "./assets/todo.png";
-import shopping from "./assets/shopping.png";
+import library from "./assets/library.webp";
+import todo from "./assets/todo.webp";
+import shopping from "./assets/shopping.webp";
 
 export default function Project() {
     return (
