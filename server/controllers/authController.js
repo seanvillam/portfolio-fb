@@ -42,3 +42,27 @@ module.exports.signin = async function (req, res, next) {
 
     }
 }
+
+module.exports.signup = async function (req, res, next) {
+    try {
+
+        const user = new UsersModel();
+
+        user.firstname = req.body.firstname;
+        user.lastname = req.body.lastname;
+        user.email = req.body.email;
+        user.password = req.body.password;
+
+        const result = await user.save();
+
+        res.json({
+            success: true,
+            message: "User registered successfully.",
+            data: result
+        });
+
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+};
