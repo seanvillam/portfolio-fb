@@ -4,51 +4,42 @@ let { expressjwt } = require('express-jwt');
 
 let secretkey = process.env.JWT_SECRET;
 
-module.exports.signin = async function (req, res, next) {
-    try {
-        console.log(req.body);
-        let user = await UsersModel.findOne({ "email": req.body.email });
+exports.signin = async (req, res) => {
 
-        console.log(user);
-        console.log(user?.constructor?.name);   
-        console.log(typeof user.authenticate);
-
-        if (!user) {
-    return res.status(401).json({
-        success: false,
-        message: "User not found."
+    const user = await User.findOne({
+        email: req.body.email
     });
-}
 
-if (!user.authenticate(req.body.password)) {
-    return res.status(401).json({
-        success: false,
-        message: "Incorrect password."
-    });
-}
-
-        let payload = {
-            id: user._id
-        }
-
-        let token = jwt.sign(payload, secretkey, {
-            algorithm: 'HS512',
-            expiresIn: "20min"
+    if (!user)
+        return res.json({
+            success:false,
+            message:"User not found"
         });
 
-        res.json(
-            {
-                success: true,
-                message: "User authenticated successfully.",
-                token: token
-            })
+    if(!user.authenticate(req.body.password))
+        return res.json({
+            success:false,
+            message:"Incorrect password"
+        });
 
-    } catch (error) {
-        console.log(error);
-        next(error);
+    const token = jwt.sign(
+        { id:user._id },
+        process.env.JWT_SECRET,
+        { expiresIn:"1d" }
+    );
 
-    }
-}
+    res.json({
+        success:true,
+        token,
+        user:{
+            id:user._id,
+            firstname:user.firstname,
+            lastname:user.lastname,
+            email:user.email
+        }
+    });
+
+};
 
 module.exports.signup = async function (req, res, next) {
     try {
