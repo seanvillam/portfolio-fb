@@ -14,11 +14,18 @@ module.exports.signin = async function (req, res, next) {
         console.log(typeof user.authenticate);
 
         if (!user) {
-            throw new Error("User not found.");
-        }
-        if (!user.authenticate(req.body.password)) {
-            throw new Error("Wrong credentials");
-        }
+    return res.status(401).json({
+        success: false,
+        message: "User not found."
+    });
+}
+
+if (!user.authenticate(req.body.password)) {
+    return res.status(401).json({
+        success: false,
+        message: "Incorrect password."
+    });
+}
 
         let payload = {
             id: user._id
