@@ -4,12 +4,6 @@ let { expressjwt } = require('express-jwt');
 
 let secretkey = process.env.JWT_SECRET;
 
-const UsersModel = require('../models/User.js');
-let jwt = require('jsonwebtoken');
-let { expressjwt } = require('express-jwt');
-
-let secretkey = process.env.JWT_SECRET;
-
 exports.signin = async (req, res) => {
 
     const user = await UsersModel.findOne({
