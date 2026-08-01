@@ -40,8 +40,8 @@ export default function SignIn() {
                 JSON.stringify(data.user)
             );
 
-            navigate("/admin");
-
+            window.location.href = "/admin";
+            
         } else {
 
             setMessage(data.message);
