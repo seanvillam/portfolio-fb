@@ -28,7 +28,7 @@ export default function Layout(){
                             style={{
                                 background: "none",
                                 border: "none",
-                                color: "blue",
+                                color: "black",
                                 cursor: "pointer",
                                 textDecoration: "underline",
                                 padding: 0,
