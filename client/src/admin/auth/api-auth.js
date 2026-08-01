@@ -23,3 +23,12 @@ export const signin = async (user) => {
 
     return await response.json();
 };
+
+export const signout = () => {
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    window.location.href = "/signin";
+
+};

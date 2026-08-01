@@ -1,8 +1,12 @@
 import React from "react";
 import favicon from "../public/favicon.svg";
 import { Link } from "react-router-dom";
+import { signout } from "../src/admin/auth/api-auth";
 
 export default function Layout(){
+
+  const isAuthenticated = !!localStorage.getItem("token");
+
      return (
     // This component is used to display the header and navigation links on all pages
     <>
@@ -12,7 +16,29 @@ export default function Layout(){
         <Link to="/">Home</Link> | <Link to="/about">About</Link> |{" "}
         <Link to="/project">Project</Link> | <Link to="/services">Services</Link> |{" "}
         <Link to="/references">References</Link> | <Link to="/contact">Contact</Link> |{" "}
-        <Link className="nav-link" to={localStorage.getItem("token") ? "/admin" : "/signin"}> Admin </Link> | <Link to="/counter">Counter</Link>
+        {!isAuthenticated ? (
+                    <>
+                        <Link to="/signin">Sign In</Link>{" "}
+                    </>
+                ) : (
+                    <>
+                        <Link to="/admin">Admin</Link> |{" "}
+                        <button
+                            onClick={signout}
+                            style={{
+                                background: "none",
+                                border: "none",
+                                color: "blue",
+                                cursor: "pointer",
+                                textDecoration: "underline",
+                                padding: 0,
+                                fontSize: "inherit"
+                            }}
+                        >
+                            Sign Out
+                        </button>
+                    </>
+                )} | <Link to="/counter">Counter</Link>
       </nav>
       <br />
       <hr />
