@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const createError = require("http-errors");
+const authMiddleware = require("./auth/auth.js");
 
 const connectDB = require("./config/db.js");
 const errorHandler = require("./helpers/errorHandler");
@@ -25,7 +26,7 @@ app.use("/api/references", referencesRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/users", userRoutes);
-app.use("/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 
 app.use((req, res, next) => {
   next(createError(404, "Route Not Found"));

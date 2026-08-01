@@ -9,6 +9,7 @@ import References from './src/references'
 import Services from './src/services'
 import Counter from './src/counter'
 import AdminDashboard from "./src/admindashboard";
+import PrivateRoute from "./src/admin/auth/PrivateRoute";
 
 import AddProject from "./src/admin/projects/AddProjects";
 import EditProject from "./src/admin/projects/EditProjects";
@@ -26,6 +27,9 @@ import ReferenceList from "./src/admin/references/ReferenceList";
 import AddReference from "./src/admin/references/AddReference";
 import EditReference from "./src/admin/references/EditReference";
 
+import SignIn from "./src/admin/auth/SignIn";
+import SignUp from "./src/admin/auth/SignUp";
+
 const MainRouter = () => {
             // The Layout component is included here so that it is displayed on all pages
             // The Routes component defines the different routes for the application and which component to render for each route
@@ -39,29 +43,28 @@ const MainRouter = () => {
             <Route path="/references" element={<References />} />
             <Route path="/services" element={<Services />} />
             <Route path="/counter" element={<Counter />} />
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin" element={<PrivateRoute><AdminDashboard /></PrivateRoute>} />
 
-            <Route path="/admin" element={<AdminDashboard />} />
-
-            {/* Users */}
-            <Route path="/admin/users" element={<UsersList />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/admin/users" element={<PrivateRoute><UsersList /></PrivateRoute>} />
             <Route path="/admin/users/add" element={<AddUser />} />
-            <Route path="/admin/users/edit/:id" element={<EditUser />} />
+            <Route path="/admin/users/edit/:id" element={<PrivateRoute><EditUser /></PrivateRoute>} />
 
             {/* Projects */}
-            <Route path="/admin/projects" element={<ProjectsList />} />
-            <Route path="/admin/projects/add" element={<AddProject />} />
-            <Route path="/admin/projects/edit/:id" element={<EditProject />} />
+            <Route path="/admin/projects" element={<PrivateRoute><ProjectsList /></PrivateRoute>} />
+            <Route path="/admin/projects/add" element={<PrivateRoute><AddProject /></PrivateRoute>} />
+            <Route path="/admin/projects/edit/:id" element={<PrivateRoute><EditProject /></PrivateRoute>} />
 
             {/* Services */}
-            <Route path="/admin/services" element={<ServiceList />} />
-            <Route path="/admin/services/add" element={<AddService />} />
-            <Route path="/admin/services/edit/:id" element={<EditService />} />
+            <Route path="/admin/services" element={<PrivateRoute><ServiceList /></PrivateRoute>} />
+            <Route path="/admin/services/add" element={<PrivateRoute><AddService /></PrivateRoute>} />
+            <Route path="/admin/services/edit/:id" element={<PrivateRoute><EditService /></PrivateRoute>} />
 
             {/* References */}
-            <Route path="/admin/references" element={<ReferenceList />} />
-            <Route path="/admin/references/add" element={<AddReference />} />
-            <Route path="/admin/references/edit/:id" element={<EditReference />} />
+            <Route path="/admin/references" element={<PrivateRoute><ReferenceList /></PrivateRoute>} />
+            <Route path="/admin/references/add" element={<PrivateRoute><AddReference /></PrivateRoute>} />
+            <Route path="/admin/references/edit/:id" element={<PrivateRoute><EditReference /></PrivateRoute>} />
         </Routes>
     </div>)
 }

@@ -1,3 +1,5 @@
+import authHeader from "../auth/auth-header";
+
 const API = "https://portfolio-test-u2ex.onrender.com/api";
 
 export const list = async () => {
@@ -10,7 +12,7 @@ export const create = async (service) => {
     const response = await fetch(`${API}/services`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json", ...authHeader()
         },
         body: JSON.stringify(service),
     });
@@ -27,7 +29,7 @@ export const update = async (id, service) => {
     const response = await fetch(`${API}/services/${id}`, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json", ...authHeader()
         },
         body: JSON.stringify(service),
     });
@@ -38,6 +40,8 @@ export const update = async (id, service) => {
 export const remove = async (id) => {
     const response = await fetch(`${API}/services/${id}`, {
         method: "DELETE",
+        headers: {...authHeader()
+        }
     });
 
     return await response.json();

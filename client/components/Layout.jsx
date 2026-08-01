@@ -12,7 +12,7 @@ export default function Layout(){
         <Link to="/">Home</Link> | <Link to="/about">About</Link> |{" "}
         <Link to="/project">Project</Link> | <Link to="/services">Services</Link> |{" "}
         <Link to="/references">References</Link> | <Link to="/contact">Contact</Link> |{" "}
-        <Link to="/admin">Admin</Link> | <Link to="/counter">Counter</Link>
+        <Link className="nav-link" to={localStorage.getItem("token") ? "/admin" : "/signin"}> Admin </Link> | <Link to="/counter">Counter</Link>
       </nav>
       <br />
       <hr />
